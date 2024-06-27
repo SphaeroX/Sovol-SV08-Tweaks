@@ -7,7 +7,7 @@ G92 E0.0
 ; ----    HOME AND WAIT POS
 M117 Startup
 G28; HOME
-START_PRINT BED_TEMP=[bed_temperature_initial_layer_single] EXTRUDER_TEMP=[nozzle_temperature_initial_layer]
+START_PRINT BED_TEMP=[bed_temperature_initial_layer_single]
 M140 S[bed_temperature_initial_layer_single]
 G1 Y0 X0 Z1 F5000
 M117 Wait for Bed
