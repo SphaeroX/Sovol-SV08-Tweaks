@@ -10,11 +10,8 @@ To call START_PRINT with the bed temperature as a parameter and use this tempera
 [gcode_macro START_PRINT]
 description: Start the print with bed temperature as parameter
 variable_state: 'Prepare'
-variable_record_extruder_temp: 0
-variable_max_record_extruder_temp: 0
 gcode:
     {% set BED_TEMP = params.BED_TEMP|default(60)|float %}
-    {% set EXTRUDER_TEMP = params.EXTRUDER_TEMP|default(200)|float %}
 
     M400
 
@@ -39,7 +36,6 @@ gcode:
         {action_respond_info("Check Heating!")}
 
         M140 S{BED_TEMP}
-        M104 S{EXTRUDER_TEMP}
 
         {% if printer.heater_bed.temperature < BED_TEMP %}
             M117 Bed heating...
@@ -47,11 +43,6 @@ gcode:
             M190 S{BED_TEMP}
         {% endif %}
 
-        {% if printer.extruder.temperature < EXTRUDER_TEMP %}
-            M117 Nozzle heating...
-            {action_respond_info("Nozzle heating...")}
-            M109 S{EXTRUDER_TEMP} 
-        {% endif %}
 
         {% if printer.quad_gantry_level.applied|lower != 'true' %}
             QUAD_GANTRY_LEVEL BED_TEMP={BED_TEMP}
@@ -123,6 +114,6 @@ gcode:
 
 ## 4. Add to Start GCode:
 ```gcode
-START_PRINT BED_TEMP=[bed_temperature_initial_layer_single] EXTRUDER_TEMP=[nozzle_temperature_initial_layer]
+START_PRINT BED_TEMP=[bed_temperature_initial_layer_single]
 ```
 
