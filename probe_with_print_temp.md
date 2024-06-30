@@ -11,7 +11,7 @@ To call START_PRINT with the bed temperature as a parameter and use this tempera
 description: Start the print with bed temperature as parameter
 variable_state: 'Prepare'
 gcode:
-    {% set BED_TEMP = params.BED_TEMP|default(60)|float %}
+    {% set BED_TEMP = params.BED_TEMP|default(65)|float %}
 
     M400
 
@@ -63,7 +63,7 @@ gcode:
 [gcode_macro QUAD_GANTRY_LEVEL]
 rename_existing: QUAD_GANTRY_LEVEL_BASE
 gcode:
-    {% set BED_TEMP = params.BED_TEMP|default(60)|float %}
+    {% set BED_TEMP = params.BED_TEMP|default(65)|float %}
 
     {action_respond_info("Check Heating!")}
     {% if printer.heater_bed.temperature != BED_TEMP %}
@@ -89,7 +89,7 @@ gcode:
 [gcode_macro BED_MESH_CALIBRATE]
 rename_existing: BED_MESH_CALIBRATE_BASE
 gcode:
-    {% set BED_TEMP = params.BED_TEMP|default(60)|float %}
+    {% set BED_TEMP = params.BED_TEMP|default(65)|float %}
 
     {action_respond_info("Check Heating!")}
     {% if printer.heater_bed.temperature != BED_TEMP %}
