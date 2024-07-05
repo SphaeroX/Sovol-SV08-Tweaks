@@ -14,8 +14,7 @@ The BIGTREETECH Smart Filament Sensor V2.0 offers the following benefits:
 
 ## Installation Guide
 
-1. Wire the sensor: Only connect the encoder as shown in the image [btt_v2_wire.jpg](btt_v2_wire.jpg) (located in the same folder).
-
+1. Wire the sensor: Only connect the encoder as shown in the image [btt_v2_wire.jpg](btt_v2_wire.jpg). The image shows the original connector with the clamping side facing up or the locking tab facing upwards.
 2. Edit the `printer.cfg` file:
 
 Remove the original section:
