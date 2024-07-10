@@ -1,4 +1,3 @@
-Here's the answer with English explanations, formatted as Markdown for easy copying to GitHub:
 
 # Modifications to START_PRINT and related macros
 
