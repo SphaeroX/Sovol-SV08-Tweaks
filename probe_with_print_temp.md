@@ -8,6 +8,8 @@ To call START_PRINT with the bed temperature as a parameter and use this tempera
 ```gcode
 [gcode_macro START_PRINT]
 description: Start the print with bed temperature as parameter
+variable_record_extruder_temp:0
+variable_max_record_extruder_temp:0
 variable_state: 'Prepare'
 gcode:
     {% set BED_TEMP = params.BED_TEMP|default(65)|float %}
