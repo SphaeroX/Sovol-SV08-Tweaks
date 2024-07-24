@@ -32,7 +32,7 @@ Replace it with:
 ```
 [filament_motion_sensor encoder_sensor]
 switch_pin: PE9
-detection_length: 2.88
+detection_length: 6.0
 extruder: extruder
 pause_on_runout: False
 runout_gcode:
