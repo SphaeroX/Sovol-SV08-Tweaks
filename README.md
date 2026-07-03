@@ -79,6 +79,8 @@ If you want to upgrade your filament sensor for clog/tangle detection, follow th
 ## Troubleshooting
 
 ### Klipper Eddy Tapping Errors (After Klipper Update)
+*Tested and verified on Klipper version `v0.13.0-701-g7e64fc84`.*
+
 If you perform a Klipper update and receive the following error when tapping:
 ```
 Unable to detect tap: invalid depress distance (0.339367 vs 0.030000:0.250000)
