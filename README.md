@@ -73,3 +73,43 @@ The stock filament sensor can have high friction due to unnecessary internal bra
 If you want to upgrade your filament sensor for clog/tangle detection, follow this installation guide detailing the pin modifications, configuration replacements in Klipper, and wiring details.
 - Read the setup guide here: [`btt-smart-filament-sensor/readme.md`](btt-smart-filament-sensor/readme.md)
 - Wiring schematic: [`btt-smart-filament-sensor/btt_v2_wire.jpg`](btt-smart-filament-sensor/btt_v2_wire.jpg)
+
+---
+
+## Troubleshooting
+
+### Klipper Eddy Tapping Errors (After Klipper Update)
+If you perform a Klipper update and receive the following error when tapping:
+```
+Unable to detect tap: invalid depress distance (0.339367 vs 0.030000:0.250000)
+```
+This is caused by outdated or missing calibration values for the Eddy current probe's tapping threshold. You will need to recalibrate your probe.
+
+#### Resolution Steps:
+
+1. Run the initial calibration guessing routine:
+   ```
+   PROBE_EDDY_CURRENT_TAP_CALIBRATE TAP=guess
+   ```
+   > [!NOTE]
+   > If you encounter the following error on your first attempt:
+   > `Unable to detect tap: insufficient slope delta (-167.188057 vs 727.299000)`
+   > Simply run the command a second time. It should succeed on subsequent attempts.
+
+2. Refine and verify the calibration:
+   ```
+   PROBE_EDDY_CURRENT_TAP_CALIBRATE TAP=refine
+   PROBE_EDDY_CURRENT_TAP_CALIBRATE TAP=verify
+   ```
+
+3. Save the configuration:
+   The verification step will yield an output like:
+   ```
+   probe_eddy_current btt_eddy: tap_threshold: 1324.090
+   The SAVE_CONFIG command will update the printer config file
+   with the above and restart the printer.
+   ```
+   Save and apply the changes by running:
+   ```
+   SAVE_CONFIG
+   ```
